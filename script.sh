@@ -16,7 +16,7 @@ do
                   --arg ts "$timeStamp" \
                   '{location: $ho, macAddress: $ma, power: $pw, timeStamp: $ts}' )
                 #echo "Si sta allontanando";
-                curl -X POST http://192.168.0.206:1880/test/#flow/da4824d9d2cc87dc -H 'Content-Type: application/json' -d "$JSON_STRING";
+                curl -X POST http://192.168.0.2:1880/test/#flow/da4824d9d2cc87dc -H 'Content-Type: application/json' -d "$JSON_STRING";
         fi
 done
 
