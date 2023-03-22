@@ -1,5 +1,5 @@
 #!/bin/bash
-macAddr=2C:BE:EB:17:CB:B3;
+macAddr=$1;
 timeStamp=`date`
 
 while sleep 1;
