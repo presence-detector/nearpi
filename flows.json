@@ -1,0 +1,391 @@
+[
+    {
+        "id": "051e91c73a6b51b2",
+        "type": "tab",
+        "label": "Flow Cattaneo",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8ae46b7be6c7de5c",
+        "type": "http in",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "url": "/test",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 160,
+        "wires": [
+            [
+                "0e041120075b35a2"
+            ]
+        ]
+    },
+    {
+        "id": "dc25ba91363da44d",
+        "type": "http response",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c3358bfab4a33deb",
+        "type": "json",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "dc25ba91363da44d"
+            ]
+        ]
+    },
+    {
+        "id": "0e041120075b35a2",
+        "type": "function",
+        "z": "051e91c73a6b51b2",
+        "name": "json to obj",
+        "func": "msg.payload = {\n     \n    \"location\": msg.payload.location,\n    \"macAddressPhone\"  : msg.payload.macAddressPhone,\n    \"power\": msg.payload.power,\n    \"timeStamp\": msg.payload.timeStamp,\n    \"macAddressPi\": msg.payload.macAddressPi\n    };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "c3358bfab4a33deb",
+                "2f784c757141573b"
+            ]
+        ]
+    },
+    {
+        "id": "2f784c757141573b",
+        "type": "csv",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "sep": ";",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 790,
+        "y": 280,
+        "wires": [
+            [
+                "59de7c5e46f5cbe6"
+            ]
+        ]
+    },
+    {
+        "id": "59de7c5e46f5cbe6",
+        "type": "file",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "filename": "/home/pi/Desktop/test.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1070,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e503cd5f51be3ba1",
+        "type": "http in",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "url": "/event",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 660,
+        "wires": [
+            [
+                "cc8e49b1c3118f4f"
+            ]
+        ]
+    },
+    {
+        "id": "cc8e49b1c3118f4f",
+        "type": "file in",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "filename": "/home/pi/Desktop/test.csv",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 470,
+        "y": 660,
+        "wires": [
+            [
+                "4198c7bc86a77b65"
+            ]
+        ]
+    },
+    {
+        "id": "4198c7bc86a77b65",
+        "type": "csv",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "sep": ";",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "location,macAddressPhone,power,timeStamp,macAddressPi",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 710,
+        "y": 700,
+        "wires": [
+            [
+                "3b1dd04701794580"
+            ]
+        ]
+    },
+    {
+        "id": "3b1dd04701794580",
+        "type": "json",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 1030,
+        "y": 780,
+        "wires": [
+            [
+                "c9908ccb5a02d0dd"
+            ]
+        ]
+    },
+    {
+        "id": "c9908ccb5a02d0dd",
+        "type": "http response",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1230,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c55b98a953634f46",
+        "type": "http in",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "url": "/piuVicino",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 500,
+        "wires": [
+            [
+                "d27445cce6c82cac",
+                "4753eb71893c5906"
+            ]
+        ]
+    },
+    {
+        "id": "d27445cce6c82cac",
+        "type": "file in",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "filename": "/home/pi/Desktop/test.csv",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 530,
+        "y": 500,
+        "wires": [
+            [
+                "a0336f11860e340a"
+            ]
+        ]
+    },
+    {
+        "id": "ec294ed80e345cc6",
+        "type": "json",
+        "z": "051e91c73a6b51b2",
+        "name": "log1",
+        "property": "log1",
+        "action": "obj",
+        "pretty": false,
+        "x": 1010,
+        "y": 620,
+        "wires": [
+            [
+                "81bcda2255eaa07e"
+            ]
+        ]
+    },
+    {
+        "id": "5fd519ec1b5d1c51",
+        "type": "json",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1410,
+        "y": 420,
+        "wires": [
+            [
+                "e0537fab6c0e4105",
+                "8b12a1430af3860b"
+            ]
+        ]
+    },
+    {
+        "id": "9c2d5dd0d926b55f",
+        "type": "file",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "filename": "/home/pi/Desktop/minPower.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1740,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0537fab6c0e4105",
+        "type": "http response",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1670,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4753eb71893c5906",
+        "type": "file in",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "filename": "/home/pi/Desktop/minPower.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 580,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7c28cb405c5d9e27",
+        "type": "json",
+        "z": "051e91c73a6b51b2",
+        "name": "minimo",
+        "property": "minimo",
+        "action": "obj",
+        "pretty": true,
+        "x": 820,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "81bcda2255eaa07e",
+        "type": "function",
+        "z": "051e91c73a6b51b2",
+        "name": "function 1",
+        "func": "var newMsg = { payload: msg.payload[0]};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 520,
+        "wires": [
+            [
+                "5fd519ec1b5d1c51"
+            ]
+        ]
+    },
+    {
+        "id": "8b12a1430af3860b",
+        "type": "debug",
+        "z": "051e91c73a6b51b2",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1480,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "a0336f11860e340a",
+        "type": "csv",
+        "z": "051e91c73a6b51b2",
+        "name": "",
+        "sep": ";",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "location,macAddressPhone,power,timeStamp,macAddressPi",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 750,
+        "y": 600,
+        "wires": [
+            [
+                "ec294ed80e345cc6"
+            ]
+        ]
+    }
+]
