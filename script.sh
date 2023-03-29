@@ -1,5 +1,4 @@
 #!/bin/bash
-#macAddr=2C:BE:EB:17:CB:B3;
 macAddr=$1;
 pi=`hciconfig | grep "BD Address:" | cut -d " " -f 3`
 
@@ -31,7 +30,6 @@ do
                 --arg pw "$power" \
                 --arg ts "$timeStamp" \
                 '{location: $ho, macAddressPhone: $ma, macAddressPi: $pi, power: $pw, timeStamp: $ts}' )
-                #echo "Si sta allontanando";
                 curl -X POST http://192.168.0.2:1880/test/#flow/da4824d9d2cc87dc -H 'Content-Type: application/json' -d "$JSON_STRING";
         fi
 done
