@@ -1,12 +1,12 @@
 #!/bin/bash
 #macAddr=2C:BE:EB:17:CB:B3;
 macAddr=$1;
-timeStamp=`date`;
 pi=`hciconfig | grep "BD Address:" | cut -d " " -f 3`
 
 while sleep 1;
 do
         power=`hcitool rssi $macAddr | cut -d " " -f4`;
+        timeStamp=`date`;
         echo $HOSTNAME | tr '\n' ';' &&  echo $macAddr | tr '\n' ';' && hcitool rssi $macAddr | cut -d " " -f4;
 
         re='^[0-9]+$';
