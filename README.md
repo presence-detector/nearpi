@@ -1,3 +1,5 @@
+![NearPI 🔗](https://github.com/presence-detector/nearpi/blob/main/docs/logo.png?raw=true)
+
 # NearPI 🔗
 
 Detect phone presence with Raspberry Pi and Bluetooth
