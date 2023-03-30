@@ -13,7 +13,7 @@ git clone https://github.com/presence-detector/nearpi.git
 2.  Run the slave
 
 ```bash
-npm run start
+./script.sh [mac_address]
 ```
 
 ## 📜 License
