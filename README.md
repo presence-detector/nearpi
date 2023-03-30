@@ -29,4 +29,3 @@ Please make sure to update tests as appropriate.
 ## 🔰 Authors
 
 -   [NearPi Team](https://github.com/presence-detector)
--
