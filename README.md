@@ -7,7 +7,7 @@ Detect phone presence with Raspberry Pi and Bluetooth
 1.  Clone the repository
 
 ```bash
-git clone https://github.com/mattiacapelli/link-shortener.git
+git clone https://github.com/presence-detector/nearpi.git
 ```
 
 2.  Run the slave
