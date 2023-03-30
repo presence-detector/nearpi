@@ -18,6 +18,11 @@ git clone https://github.com/presence-detector/nearpi.git
 ./script.sh [mac_address]
 ```
 
+## Diagram
+
+![NearPI 🔗](https://github.com/presence-detector/nearpi/blob/main/docs/client_diagram.png?raw=true)
+
+
 ## 📜 License
 
 [MIT](https://choosealicense.com/licenses/mit/)
